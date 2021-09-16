@@ -4,19 +4,29 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ChatScreen from './screens/ChatScreen';
-import ChatMessagesScreen from './screens/ChatMessagesScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import ChatStackNavigator from './components/ChatStackNavigator';
+import HomeScreen from './screens/HomeScreen';
+import DiscoverScreen from './screens/DiscoverScreen';
+import MenuScreen from './screens/MenuScreen';
+import { HeaderShownContext } from '@react-navigation/elements';
 
-const Stack = createNativeStackNavigator();
+
 
 export default function App() {
+
+const Tab = createBottomTabNavigator();
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Chat" component={ChatScreen} />
-        <Stack.Screen name="ChatMessages" component={ChatMessagesScreen} 
-          options={{ title: 'Chat Messages' }}/>
-      </Stack.Navigator>
+      <Tab.Navigator screenOptions={{ headerShown: false }}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Discover" component={DiscoverScreen} />
+        <Tab.Screen name="Chat" component={ChatStackNavigator} />
+        <Tab.Screen name="Menu" component={MenuScreen} />
+      </Tab.Navigator>
+
+   
     </NavigationContainer>
   );
 }

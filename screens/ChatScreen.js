@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+
+
+
 const ChatScreen = props => {
    const navigation = useNavigation();
 
