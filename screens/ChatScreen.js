@@ -1,24 +1,32 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Button, StyleSheet, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
-
+import { ChatRooms } from './../dummy-data/DummyData';
+import ChatRoom from './../components/ChatRoom'
 
 const ChatScreen = props => {
-   const navigation = useNavigation();
-
+   
    return (
-    <View>
-       <Text>Main Chat Screen</Text>
-       <Button title="Go to chat message" 
-         onPress={() => navigation.navigate('ChatMessages')}></Button>
-    </View>
+      <View style={styles.container}>
+         
+          <FlatList
+            data={ChatRooms}
+            renderItem={itemData => (
+                <ChatRoom chatroom={itemData.item}></ChatRoom>
+            )}
+            keyExtractor={item => item.chatRoomId}
+        />
+      </View>
  );
 }
 
 const styles = StyleSheet.create({
- 
+   container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+   },
 });
 
 export default ChatScreen;

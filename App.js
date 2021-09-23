@@ -11,23 +11,23 @@ import DiscoverScreen from './screens/DiscoverScreen';
 import MenuScreen from './screens/MenuScreen';
 import { HeaderShownContext } from '@react-navigation/elements';
 
-
+import { createStore, combineReducers } from 'redux';
+import ChatReducer from './store/reducers/ChatReducer';
+import { Provider } from 'react-redux';
 
 export default function App() {
 
 const Tab = createBottomTabNavigator();
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Discover" component={DiscoverScreen} />
-        <Tab.Screen name="Chat" component={ChatStackNavigator} />
-        <Tab.Screen name="Menu" component={MenuScreen} />
-      </Tab.Navigator>
-
-   
-    </NavigationContainer>
+      <NavigationContainer>
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+          <Tab.Screen name="Home" component={HomeScreen} />
+          <Tab.Screen name="Discover" component={DiscoverScreen} />
+          <Tab.Screen name="ChatOuter" component={ChatStackNavigator} />
+          <Tab.Screen name="Menu" component={MenuScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
   );
 }
 
