@@ -13,6 +13,9 @@ import SignupScreen from './screens/SignupScreen'
 import SigninScreen from './screens/SigninScreen'
 import { HeaderShownContext } from '@react-navigation/elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFonts } from 'expo-font';
+import { getHeaderTitle } from '@react-navigation/elements';
+// import global_styles from './global_stylesheet'
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import ChatReducer from './store/reducers/ChatReducer';
@@ -20,7 +23,17 @@ import UserReducer from './store/reducers/UserReducer';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk'
 
+
+
 export default function App() {
+
+  const [loaded] = useFonts({
+    Teko: require('./assets/fonts/Teko-Medium.ttf'),
+  });
+  
+  if (!loaded) {
+    return null;
+  }
 
 const rootReducer = combineReducers({
   chat: ChatReducer, // subscribe
@@ -53,13 +66,29 @@ const Tab = createBottomTabNavigator();
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: '#5050A5',
           tabBarInactiveTintColor: 'gray',
           
-          tabBarStyle: { height: 80,
+          tabBarStyle: { 
+          height: 93,
           paddingTop: 10,
           paddingBottom: 25,
-        backgroundColor: '#E5E5E5'}
+          backgroundColor: 'white',
+          },
+          tabBarLabelStyle: {
+            fontFamily: "Teko",
+            fontSize: 16,
+            textTransform: 'uppercase'
+          },
+          headerTitleStyle: {
+            fontFamily: "Teko",
+            fontSize: 26,
+            color: '#5050A5',
+            textTransform: 'uppercase'
+          },
+          headerStyle: {
+            height: 100,
+          }
         })}
       >
           <Tab.Screen name="Home" component={SignupScreen} /> 
@@ -79,4 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  tabs: {
+    fontFamily: "Teko"
+  }
 });

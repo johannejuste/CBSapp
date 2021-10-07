@@ -49,7 +49,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-  <key>UIStatusBarStyle</key>
-  <string>UIStatusBarStyleDefault</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Teko-Bold.ttf</string>
+		<string>Teko-Light.ttf</string>
+		<string>Teko-Medium.ttf</string>
+		<string>Teko-Regular.ttf</string>
+		<string>Teko-SemiBold.ttf</string>
+	</array>
 </dict>
 </plist>
